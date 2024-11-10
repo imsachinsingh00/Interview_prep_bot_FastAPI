@@ -1,0 +1,13 @@
+sentence-transformers
+uvicorn
+ctransformers
+langchain
+python-box
+streamlit
+torch 
+transformers
+fastapi
+pydantic
+python-dotenv
+requests
+langchain community
