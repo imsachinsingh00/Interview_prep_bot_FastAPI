@@ -10,4 +10,4 @@ fastapi
 pydantic
 python-dotenv
 requests
-langchain community
+langchain-community
