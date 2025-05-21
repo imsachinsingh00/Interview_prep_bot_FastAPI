@@ -1,44 +1,19 @@
-# Data Scientist Interview Preparation App with LLaMA
+# Data Scientist Interview Preparation Bot
 
-## Overview
-This is an application that helps users prepare for data science interviews by generating questions using the LLaMA model. The application consists of a FastAPI backend for generating questions and a Streamlit frontend for user interaction.
+An interactive interview‐prep application that dynamically generates multiple-choice questions on data-science and software-engineering topics using a local LLaMA model.  
+The **backend** is a FastAPI service powered by **LangChain + CTransformers**, and the **frontend** is a Streamlit app for a straightforward, session-state-powered UX.
 
-### Project Structure
-data_scientist_prep/
-│
-├── backend/
-│   ├── main.py
-│   ├── requirements.txt
-│   └── llama_model/
-│       ├── llama_tokenizer/
-│       └── llama_weights/
-│
-├── frontend/
-│   ├── app.py
-│   └── requirements.txt
-│
-├── .env (Optional for API keys)
-└── README.md
+---
 
+## 🔍 Features
 
-## Backend Setup
-1. Navigate to the `backend/` directory.
-2. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-# Run the FastAPI server
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-
-# Run the Streamlit app:
-streamlit run app.py
-
-
-
-### **Summary**
-- **Backend** (`FastAPI`) to dynamically generate questions using LLaMA.
-- **Frontend** (`Streamlit`) to interact with the user.
-- **LLaMA Model Setup** to serve questions dynamically.
-- **Requirements** files for both the backend and frontend to manage dependencies.
-
-This setup allows users to dynamically generate questions on different data science topics, interactively answer, and keep practicing. Let me know if you have questions about deploying or modifying this further! 😊
-
+- **Dynamic Question Generation**  
+  Generates technical interview questions on demand (e.g. “Machine Learning”, “Data Structures”, “Python”, “Generative AI”, “Computer Vision”, “Deep Learning”), complete with four multiple-choice options and a marked correct answer.
+- **FastAPI Backend**  
+  Exposes a `POST /get_question/` endpoint that accepts `{"category": "<topic>"}` and returns JSON:
+  ```json
+  {
+    "question": "…",
+    "options": ["A) …", "B) …", "C) …", "D) …"],
+    "correct_answer": "b"
+  }
