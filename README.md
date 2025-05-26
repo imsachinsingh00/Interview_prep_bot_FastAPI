@@ -1,19 +1,66 @@
-# Data Scientist Interview Preparation Bot
+# 🧠 Interview Preparation Bot (FastAPI Edition)
 
-An interactive interview‐prep application that dynamically generates multiple-choice questions on data-science and software-engineering topics using a local LLaMA model.  
-The **backend** is a FastAPI service powered by **LangChain + CTransformers**, and the **frontend** is a Streamlit app for a straightforward, session-state-powered UX.
+This is a backend API for an interview preparation chatbot built using **FastAPI** and integrated with **Hugging Face Inference API**. It generates MCQs based on selected topics to help users prepare for technical interviews.
 
----
+## 🚀 Features
 
-## 🔍 Features
+- RESTful API using FastAPI
+- Topic-based MCQ generation using a Hugging Face model
+- JSON-based structured responses (question, options, correct index)
+- Extensible API design for frontend integration
 
-- **Dynamic Question Generation**  
-  Generates technical interview questions on demand (e.g. “Machine Learning”, “Data Structures”, “Python”, “Generative AI”, “Computer Vision”, “Deep Learning”), complete with four multiple-choice options and a marked correct answer.
-- **FastAPI Backend**  
-  Exposes a `POST /get_question/` endpoint that accepts `{"category": "<topic>"}` and returns JSON:
-  ```json
-  {
-    "question": "…",
-    "options": ["A) …", "B) …", "C) …", "D) …"],
-    "correct_answer": "b"
-  }
+## 📁 Project Structure
+
+```
+.
+├── backend/
+│   ├── main.py               # FastAPI app
+│   ├── routes/               # Endpoint routes
+│   ├── services/             # Hugging Face client & logic
+│   └── models/               # Pydantic schemas
+├── .github/                  # GitHub Actions (optional CI/CD)
+├── requirements.txt          # Python dependencies
+└── README.md
+```
+
+## ⚙️ Setup Instructions
+
+1. **Clone the repository**
+```bash
+git clone <repo-url>
+cd Interview_prep_bot_FastAPI-master
+```
+
+2. **Create a virtual environment**
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+4. **Set up environment variable**
+
+Create a `.env` file in the root directory:
+```
+HUGGINGFACEHUB_API_TOKEN=your_hf_api_key
+```
+
+5. **Run the API**
+```bash
+uvicorn backend.main:app --reload
+```
+
+6. **Access the docs**
+Visit [http://localhost:8000/docs](http://localhost:8000/docs) for interactive Swagger UI.
+
+## 🧠 Model Used
+
+- `mistralai/Mixtral-8x7B-Instruct-v0.1` via Hugging Face Inference API
+
+## 📄 License
+
+MIT License.
